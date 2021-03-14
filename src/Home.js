@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import app from './base';
 import {
     BrowserRouter as Router,
@@ -9,6 +9,10 @@ import Login from './Login';
 import Signup from './Signup';
 
 const Home = () => {
+    const [users, setUsers] = useState([])
+    useEffect(() => {
+        
+    })
         return (
             <Router>
                 <div>
