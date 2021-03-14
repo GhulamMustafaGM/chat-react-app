@@ -14,11 +14,11 @@ const Home = () => {
         app.database().ref(`users`)
         .on('value', (users) => {
             let usersArray = []
-            users.forEach(user => {
+            users.forEach((user) => {
                 usersArray.push(user.val())
-            });
-        });
-    }, [])
+            })
+        })
+    },[])
         return (
             <Router>
                 <div>
