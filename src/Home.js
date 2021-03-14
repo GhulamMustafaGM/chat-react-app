@@ -18,7 +18,15 @@ class Home extends Component {
         return (
             <Router>
                 <div>
+                    <h1>Home Page</h1>
+                    <button onClick={() => app.auth().signOut()} >Logout</button>
                 </div>
+
+                <Switch>
+                    <Route>
+                        
+                    </Route>
+                </Switch>
             </Router>
         );
     }
