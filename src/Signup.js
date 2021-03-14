@@ -1,17 +1,37 @@
-import react, { component } from 'react';
+import react, { Component, useCallback } from 'react';
+import {withRouter} from 'react-router';
+import app from './base';
 
-class Signup extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
-    render() { 
-        return (
-            <div>
-                <h1>Signup Screen</h1>
-            </div>
-        );
-    }
+const Signup = ({history}) => {
+    const handleSignup = useCallback(
+        async event => {
+            event.preventDefault();
+            const {email,password} = event.target.elements;
+            try {
+                await app.auth()
+                .createUserWithEmailAndPassword(email.value, password.value)
+                history.push("/")
+            } catch(error) {
+                alert(error)
+            }
+        }, [history]
+    )
+    return (
+        <div>
+            <h1>Sign up</h1>
+            <form onSubmit={handleSignup} >
+                <label for="email">
+                    Email  
+                    <input type="email" name="email" placeholder="Email" />
+                </label>
+                <label for="password">
+                    Password  
+                    <input type="password" name="password" placeholder="Password" />
+                </label>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    )
 }
 
-export default Signup;
+export default withRouter(Signup);
