@@ -8,14 +8,7 @@ import {
 import Login from './Login';
 import Signup from './Signup';
 
-class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            admin:''
-        }
-    }
-    render() { 
+const Home = () => {
         return (
             <Router>
                 <div>
@@ -34,6 +27,5 @@ class Home extends Component {
             </Router>
         );
     }
-}
 
 export default Home;
