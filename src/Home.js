@@ -10,7 +10,7 @@ import Signup from './Signup';
 
 const Home = () => {
     const [users, setUsers] = useState([])
-    useEffect(()) => {
+    useEffect(() => {
         app.database().ref(`users`)
         .on('value', (users) => {
             let usersArray = []
