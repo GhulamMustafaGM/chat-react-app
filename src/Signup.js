@@ -10,6 +10,12 @@ const Signup = ({history}) => {
             try {
                 await app.auth()
                 .createUserWithEmailAndPassword(email.value, password.value)
+                // save use data into FIREBASE REALTIME DATABASE
+                app.database().ref(`users/${app.auth().currentUser.uid}`)
+                .set({
+                    id:app.auth().currentUser.uid,
+                    email:email.value
+                })
                 history.push("/")
             } catch(error) {
                 alert(error)
