@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import {withRouter, Redirect} from 'react-router';
 import app from './base';
-import {AuthContect, AuthContext} from './Auth';
+import {AuthContext} from './Auth';
 
 const Login = ({ history }) => {
         const handleLogin = useCallback(
@@ -24,7 +24,7 @@ const Login = ({ history }) => {
         return (
             <div>
                 <h1>Log in</h1>
-                <form onSubmit={handLeLogin}>
+                <form onSubmit={handleLogin}>
                     <label for="email">
                         Email 
                         <input type="email" name="email" placeholder="Email" />

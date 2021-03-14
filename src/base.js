@@ -10,8 +10,5 @@ var firebaseConfig = {
     measurementId: "G-M2823QJBTY"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig)
-
-// initialize firebaser
-const app = firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig)
 export default app;

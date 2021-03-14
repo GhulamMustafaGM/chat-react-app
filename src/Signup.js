@@ -1,11 +1,11 @@
-import react, { Component, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {withRouter} from 'react-router';
 import app from './base';
 
 const Signup = ({history}) => {
     const handleSignup = useCallback(
         async event => {
-            event.preventDefault();
+            event.preventDefault()
             const {email,password} = event.target.elements;
             try {
                 await app.auth()
