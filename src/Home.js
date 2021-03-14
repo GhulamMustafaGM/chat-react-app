@@ -25,16 +25,22 @@ const Home = () => {
     },[])
         return (
             <Router>
-                <div>
+                <div className="container">
                     <h1>Home Page</h1>
                     {users.map(user => {
                         return (
-                            <div>
-                                <p>{user.email}</p>
+                            <div classNmae="media border p-3">
+                            <img src="/user.png" alt="John Doe"
+                            className="mr-3 mt-3 rounded-circle" width="64" />
+                            <div className="media-body">
+                                <h4>{user.email}</h4>
+                                <button className="btn btn-info " type="button"> Chat</button>
+                            </div>
                             </div>
                         )
                     })}
-                    <button onClick={() => app.auth().signOut()} >Logout</button>
+                    <br />
+                    <button className="btn btn-danger" onClick={() => app.auth().signOut()} >Logout</button>
                 </div>
 
                 <Switch>
