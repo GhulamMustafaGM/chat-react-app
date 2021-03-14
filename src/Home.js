@@ -15,14 +15,25 @@ const Home = () => {
         .on('value', (users) => {
             let usersArray = []
             users.forEach((user) => {
+                console.log('EACH USER -- ', user.val())
                 usersArray.push(user.val())
             })
+            console.log(usersArray)
+            setUsers(usersArray)
         })
+        console.log(users)
     },[])
         return (
             <Router>
                 <div>
                     <h1>Home Page</h1>
+                    {users.map(user => {
+                        return (
+                            <div>
+                                <p>{user.email}</p>
+                            </div>
+                        )
+                    })}
                     <button onClick={() => app.auth().signOut()} >Logout</button>
                 </div>
 
