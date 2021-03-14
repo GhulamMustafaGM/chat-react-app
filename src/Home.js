@@ -1,11 +1,13 @@
 import React, {component} from 'react';
-import app from '.base';
+import app from './base';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link  
 } from 'react-router-dom';
+import Login from './Login';
+import Signup from './Signup';
 
 class Home extends Component {
     constructor(props) {
@@ -23,8 +25,11 @@ class Home extends Component {
                 </div>
 
                 <Switch>
-                    <Route>
-                        
+                    <Route exact path="/login">
+                        <Login/>
+                    </Route>
+                    <Route exact path="/signup">
+                        <Signup />
                     </Route>
                 </Switch>
             </Router>
