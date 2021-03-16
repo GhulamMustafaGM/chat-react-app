@@ -3,7 +3,8 @@ import app from './base';
 import {
     BrowserRouter as Router,
     Switch,
-    Route, 
+    Route,
+    useHistory
 } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
@@ -23,6 +24,7 @@ const Home = () => {
         })
         console.log(users)
     },[])
+    let history = useHistory()
         return (
             <Router>
                 <div className="container">
@@ -34,12 +36,16 @@ const Home = () => {
                             className="mr-3 mt-3 rounded-circle" width="64" />
                             <div className="media-body">
                                 <h4>{user.email}</h4>
-                                <button className="btn btn-info " type="button"> Chat</button>
+                                <button onClick={() => {
+                                    history.push(`/chat/${user.id}`)
+                                }}
+                                className="btn btn-info"
+                                type="button"> Chat</button>
                             </div>
                             </div>
                         )
                     })}
-                    <br />
+                    <br/>
                     <button className="btn btn-danger" onClick={() => app.auth().signOut()} >Logout</button>
                 </div>
 

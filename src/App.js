@@ -6,6 +6,7 @@ import Login from './Login';
 import Signup from './Signup';
 import {AuthProvider} from './Auth';
 import PrivateRoute from './PrivateRoute';
+import ChatRoom from './ChatRoom';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/chat/:id" component={ChatRoom} />
         </div>
       </Router>
     </AuthProvider>
