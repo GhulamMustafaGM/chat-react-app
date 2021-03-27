@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Link,
     useHistory
 } from 'react-router-dom';
 import Login from './Login';
@@ -28,17 +29,20 @@ const Home = () => {
     return (
         <Router>
             <div className="container">
-                <h1>Home Page</h1>
+                <h1 style={{
+                    textAlign: 'center'
+                }}>Chat Users</h1>
                 {users.map(user => {
                     return (
-                        <div classNmae="media border p-3">
+                        <div className="media border p-3">
                             <img src="/user.png" alt="John Doe"
                                 className="mr-3 mt-3 rounded-circle" width="64" />
                             <div className="media-body">
                                 <h4>{user.email}</h4>
-                                <button onClick={() => {
-                                    history.push(`/chat/${user.id}`)
-                                }}
+                                <button
+                                    onClick={() => {
+                                        history.push(`/chat/${user.id}`)
+                                    }}
                                     className="btn btn-info"
                                     type="button"> Chat</button>
                             </div>
@@ -46,9 +50,8 @@ const Home = () => {
                     )
                 })}
                 <br />
-                <button className="btn btn-danger" onClick={() => app.auth().signOut()} >Logout</button>
+                <button className="btn btn-danger" onClick={() => app.auth().signOut()}>Logout</button>
             </div>
-
             <Switch>
                 <Route exact path="/login">
                     <Login />
@@ -58,7 +61,6 @@ const Home = () => {
                 </Route>
             </Switch>
         </Router>
-    );
+    )
 }
-
 export default Home;
