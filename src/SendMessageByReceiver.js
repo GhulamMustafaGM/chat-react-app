@@ -1,10 +1,9 @@
 import app from './base';
-// sender message
-export const SenderMessages = async (msgValue, currentUserId, guestUserId, date) => {
+// receiver message
+export const ReceiverMessages = async (msgValue, currentUserId, guestUserId, date) => {
     try {
-        return await app.database()
-            .ref(`messages/${currentUserId}`)
-            .child(guestUserId)
+        return await app.database().ref(`messages/${guestUserId}`)
+            .child(currentUserId)
             .push({
                 message: {
                     sender: currentUserId,
