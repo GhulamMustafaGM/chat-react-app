@@ -8,7 +8,7 @@ const ChatRoom = () => {
     let userId = location.pathname.substring(6)
     let currentUserID = app.auth().currentUser.uid
     const [msgValue, setMsgValue] = useState('')
-    const [user, setUser] = useState('')
+    /// const [user, setUser] = useState('')
     const [user, setUser] = useState({
         id:'',
         email:''
@@ -36,10 +36,28 @@ const ChatRoom = () => {
             })
         })
         // find messages from firebase database
+        app.database().ref(`messages`)
+        .child(userId)
+        .child(currentUserID)
+        .on('value',(msgs) => {
+            let msg = []
+            msgs.forEach((child) =>{
+                console.log('Each Message -- ', child.val())
+                msg.push({
+                    sender: child.val().message.sender,
+                    receiver: child.val().message.receiver,
+                    msg:child.val().messae.msg
+                })
+            })
+            setMessages(msg)
+        })
     }, [])
     return (
-        <div>
+        <div className="container">
             <h1>Chat Room</h1>
+            <div className="media">
+                <img src="/user.png" className="mr-3" style={{ width:'64px' }} alt="" />
+            </div>
         </div>
     )
 }
